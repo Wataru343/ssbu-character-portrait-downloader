@@ -47,7 +47,7 @@ character_list = [
     "king_dedede",
     "olimar",
     "lucario",
-    "rob",
+    "robot",
     "toon_link",
     "wolf",
     "villager",
@@ -56,6 +56,9 @@ character_list = [
     "rosalina_and_luma",
     "little_mac",
     "greninja",
+    "mii_brawler",
+    "mii_swordfighter",
+    "mii_gunner",
     "palutena",
     "pac_man",
     "robin",
@@ -89,20 +92,22 @@ character_list = [
     ]
 
 
-for character in character_list:
-    os.makedirs(f"{os.path.curdir}/{character}", exist_ok=True)
+for i, character in enumerate(character_list, start=1):
+    os.makedirs(f"{os.path.curdir}/{str(i).zfill(2)}.{character}", exist_ok=True)
 
-    for i in range(1, 9):
-        if i == 1:
-            url = f"{base_url}/{character}/main.png"
-        else:
-            url = f"{base_url}/{character}/main{i}.png"
-        save_name=f"{character}/{i}.png"
+    if i <= 53 or i >= 57:
+        for j in range(1, 9):
+            if j == 1:
+                url = f"{base_url}/{character}/main.png"
+            else:
+                url = f"{base_url}/{character}/main{j}.png"
+            save_name=f"{os.path.curdir}/{str(i).zfill(2)}.{character}/{j}.png"
 
-        print(f"Downloading {url} to {save_name}")
-        urllib.request.urlretrieve(url, save_name)
-
-
-urllib.request.urlretrieve("https://www.ssbwiki.com/images/archive/e/e4/20180703015005%21Mii_Brawler_SSBU.png", "mii_fighter/1.png")
-urllib.request.urlretrieve("https://www.ssbwiki.com/images/archive/f/fa/20180703015048%21Mii_Swordfighter_SSBU.png", "mii_fighter/2.png")
-urllib.request.urlretrieve("https://www.ssbwiki.com/images/archive/e/e5/20180703015051%21Mii_Gunner_SSBU.png", "mii_fighter/3.png")
+            print(f"Downloading {url} to {save_name}")
+            urllib.request.urlretrieve(url, save_name)
+    elif i == 54:
+        urllib.request.urlretrieve("https://www.ssbwiki.com/images/archive/e/e4/20180703015005%21Mii_Brawler_SSBU.png", f"{os.path.curdir}/{str(i).zfill(2)}.{character}/1.png")
+    elif i == 55:
+        urllib.request.urlretrieve("https://www.ssbwiki.com/images/archive/f/fa/20180703015048%21Mii_Swordfighter_SSBU.png", f"{os.path.curdir}/{str(i).zfill(2)}.{character}/1.png")
+    elif i == 56:
+        urllib.request.urlretrieve("https://www.ssbwiki.com/images/archive/e/e5/20180703015051%21Mii_Gunner_SSBU.png", f"{os.path.curdir}/{str(i).zfill(2)}.{character}/1.png")
