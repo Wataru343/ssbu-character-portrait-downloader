@@ -1,3 +1,3 @@
-# ssbu-charactor-portrait-downloader
+# ssbu-character-portrait-downloader
 
 T/O
